@@ -97,6 +97,10 @@ img.logo.nav-link {
     list-style: none;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
+    border-radius: 50px;
+    border-color: #0e0e0e;
+    background-color: rgb(238, 174, 202);
+    margin-right: 40px;
 }
 .container {
     margin-top: 30px;
@@ -106,6 +110,9 @@ img.logo.nav-link {
     height: 300px;
     border-radius: 20px;
 }
+/* .enlace:hover {
+    color: #97d848;
+} */
 h1 {
     font-family: Salsa;
     font-style: normal;
@@ -138,6 +145,10 @@ h2 {
     justify-content: center;
     list-style: none;
 }
+/* .enlace:active {
+    background-color: #ab4493;
+} */
+
 .me {
     margin: 50px;
     padding-bottom: 100px;
