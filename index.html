@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                // https://dashboard.emailjs.com/admin/integration
+                emailjs.init("user_HV0gBfwzcYyGlfAkhaeCF");
+            })();
+        </script>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById('contact-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    // generate a five digit number for the contact_number variable
+                    this.contact_number.value = Math.random() * 100000 | 0;
+                    // these IDs from the previous steps
+                    emailjs.sendForm('service_vdv6r1h', 'template_1jcsakf', this)
+                        .then(function() {
+                            console.log('SUCCESS!');
+                            alert("su mensaje se ha enviado")
+                        }, function(error) {
+                            console.log('FAILED...', error);
+                        });
+                });
+            }
+        </script>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +46,7 @@
                         class="logo nav-link"
                         src="./assents/imagenes/logo.png"
                         alt="logo"
-                        style="width: 150px; height: 80px"
+                        style="width: 83px; height: 80px"
                         --
                     />
                 </div>
@@ -91,10 +115,10 @@
                 <br /><br />
                 <div class="about">
                     <div class="insignias">
-                        <a href="https://media-exp1.licdn.com/dms/image/sync/C4E27AQEh5eD8RHS-xA/articleshare-shrink_1280_800/0/1627653520551?e=1628352000&v=beta&t=Wrfs-vDIyZpgLWaiHOzv1ufNz5acvmnpCFBXUELwXT8">
+                        <a href="https://www.credly.com/badges/abb85fa6-b068-439c-91bb-3b36e571b133/linked_in">
                         <img
                             class="insignia"
-                            src="assents/imagenes/insignia.jpg"
+                            src="assents/imagenes/insigniadireccion1.png"
                             alt="insignia"class="item-img"
                         />
                         </a>
@@ -103,10 +127,10 @@
                         </div>
                     </div>
                     <div class="insignias">
-                        <a href="https://media-exp1.licdn.com/dms/image/sync/C4E27AQG2qsoOpNLvyw/articleshare-shrink_1280_800/0/1627653520544?e=1628352000&v=beta&t=0BmyYDx7rguT7Krg9v843LYeH2mjT1Vbz4-cogjyJY8">
+                        <a href="https://www.credly.com/badges/e68dfe59-cf06-4401-ae90-888812df015a/linked_in">
                         <img
                             class="insignia"
-                            src="assents/imagenes/insignia 2.jpeg"
+                            src="assents/imagenes/insigniadireccion2.png"
                             alt="insignia"class="item-img"
                         />
                         </a>
@@ -114,15 +138,15 @@
                             Direccion y evaluacion <br />de proyectos
                         </div>
                     </div>
-                    <div class="insignias">
+                    <div class="insignia">
                         <a href="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~MC8RSDSMLKEW/CERTIFICATE_LANDING_PAGE~MC8RSDSMLKEW.jpeg">
                         <img
-                            class="insignia"
+                            class="imagencoursera"
                             src="assents/imagenes/logo-coursera.png"
-                            alt="insignia" class="item-img"
-                        />
+                            alt="insignia" class="item-img "
+                                                    />
                     </a>
-                        <div class="nombres">
+                        <div class="nombres"><br>
                             Gestion de Marca <br />y productos
                         </div>
                        
@@ -137,7 +161,7 @@
                     oportunidades de la era digital
                 </p>
             </div>
-
+<!-- inicia seccion proyectos -->
             <a name="proyectos" id="proyectos">
                 <h2 class="titulo">proyectos</h2>
                 <div class="containerproyectos">
@@ -190,33 +214,27 @@
                     </div>
                 </div>
                 <div class="tributo">
+                    <h2>Tributo</h2>
                     <img class="tributoimagen" src="./assents/imagenes/tributo.png" alt="" class="item-img" />
                     <div class="item-text">
-                        <h3>Tributo</h3>
+                       
                     </div>
                 </div>
 
             </div>
         </main>
-        <div class="contact_form">
-            <a name="formulario" id="formulario">	
-            <div class="formulario">			
-          <h1>Formulario de contacto</h1>    
- <form class="contactenos">			
-        <p>
-        <label for="user_name" class="user_name"">Nombre </label>
-        <input type="text" name="user_name" id="user_name"placeholder="Escribe tu nombre"></p>
-        <p>
-        <label for="user_email" class="user_email">Email</label>
-        <input type="email" name="user_email" id="user_email" placeholder="Escribe tu Email"> </p>
-         <p>
-        <label for="telefone" class="telefone">Teléfono </label>
-        <input type="tel" name="telefone" id="telefone" placeholder="Escribe tu teléfono"> </p>				
-         <p>
-        <label for="mensaje" class="mensaje">Mensaje</label>                     
-        <textarea name="introducir_mensaje" class="mensaje" id="mensaje"  placeholder="Deja aquí tu comentario..."></textarea> <p>	  								
-                                
-        <button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
+        
+<form id="contact-form">
+    <h1>Formulario de contacto</h1>  
+    <input type="hidden" name="contact_number">
+    <label>Name</label>
+    <input type="text" name="user_name">
+    <label>Email</label>
+    <input type="email" name="user_email">
+    <label>Message</label>
+    <textarea name="message"></textarea>
+    <button type="submit">Enviar<value="Send"></button>
+     <button type="reset">Nuevo mensaje<value="limpiar"></button>
 </form>
 
 </div>	
@@ -227,7 +245,7 @@
             class="logo nav-link"
             src="./assents/imagenes/logo.png"
             alt="logo"
-            style="width: 150px; height: 80px"
+            style= "width: 83px; height: 80px"
         />
  <div class="container">
             <div class="copyright">
